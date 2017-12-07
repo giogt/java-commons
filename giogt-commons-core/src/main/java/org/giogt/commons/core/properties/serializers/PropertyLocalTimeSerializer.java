@@ -4,9 +4,8 @@ import org.giogt.commons.core.properties.MappingContext;
 import org.giogt.commons.core.properties.PropertySerializationException;
 import org.giogt.commons.core.properties.PropertySerializer;
 
-import java.time.LocalDate;
+import java.time.DateTimeException;
 import java.time.LocalTime;
-import java.time.format.DateTimeParseException;
 
 public class PropertyLocalTimeSerializer implements PropertySerializer<LocalTime> {
 
@@ -27,7 +26,7 @@ public class PropertyLocalTimeSerializer implements PropertySerializer<LocalTime
 
         try {
             return LocalTime.parse(stringValue);
-        } catch (DateTimeParseException e) {
+        } catch (DateTimeException e) {
             throw new PropertySerializationException(
                     "cannot parse property value <" + stringValue + "> to local time",
                     e);

@@ -5,7 +5,6 @@ import org.giogt.commons.core.properties.PropertySerializationException;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
-import java.time.Month;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.nullValue;

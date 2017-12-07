@@ -5,17 +5,17 @@ import org.giogt.commons.core.properties.PropertySerializationException;
 import org.giogt.commons.core.properties.PropertySerializer;
 
 import java.time.DateTimeException;
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
-public class PropertyLocalDateTimeSerializer implements PropertySerializer<LocalDateTime> {
+public class PropertyOffsetDateTimeSerializer implements PropertySerializer<OffsetDateTime> {
 
     @Override
-    public Class<? extends LocalDateTime> handledType() {
-        return LocalDateTime.class;
+    public Class<? extends OffsetDateTime> handledType() {
+        return OffsetDateTime.class;
     }
 
     @Override
-    public LocalDateTime fromString(
+    public OffsetDateTime fromString(
             MappingContext context,
             String stringValue)
             throws PropertySerializationException {
@@ -25,10 +25,10 @@ public class PropertyLocalDateTimeSerializer implements PropertySerializer<Local
         }
 
         try {
-            return LocalDateTime.parse(stringValue);
+            return OffsetDateTime.parse(stringValue);
         } catch (DateTimeException e) {
             throw new PropertySerializationException(
-                    "cannot parse property value <" + stringValue + "> to local date time",
+                    "cannot parse property value <" + stringValue + "> to offset date time",
                     e);
         }
     }
@@ -36,7 +36,7 @@ public class PropertyLocalDateTimeSerializer implements PropertySerializer<Local
     @Override
     public String toString(
             MappingContext context,
-            LocalDateTime value)
+            OffsetDateTime value)
             throws PropertySerializationException {
 
         if (value == null) {
