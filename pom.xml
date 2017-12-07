@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.giogt.commons</groupId>
+  <artifactId>giogt-commons</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+  <name>giogt-commons</name>
+  <description>GioGT common utilities</description>
+
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>giogt-commons-core</module>
+    <module>giogt-commons-uri</module>
+  </modules>
+
+  <properties>
+    <!-- encoding -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+    <!-- java versions -->
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+
+    <!-- logging -->
+    <slf4j.version>1.7.25</slf4j.version>
+    <ch.qos.logback.version>1.2.3</ch.qos.logback.version>
+
+    <!-- tests -->
+    <org.hamcrest.version>1.3</org.hamcrest.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- logging -->
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>${ch.qos.logback.version}</version>
+      </dependency>
+
+      <!-- project modules -->
+      <dependency>
+        <groupId>org.giogt.commons</groupId>
+        <artifactId>giogt-commons-core</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.giogt.commons</groupId>
+        <artifactId>giogt-commons-uri</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+
+      <!-- tests -->
+      <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-api</artifactId>
+        <version>RELEASE</version>
+      </dependency>
+      <dependency>
+        <groupId>org.hamcrest</groupId>
+        <artifactId>hamcrest-library</artifactId>
+        <version>${org.hamcrest.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+</project>
