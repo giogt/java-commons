@@ -5,32 +5,29 @@ import org.giogt.commons.core.properties.PropertySerializationException;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.nullValue;
 import static org.hamcrest.core.Is.is;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PropertyBooleanSerializerTest {
 
     @Test
-    public void fromString_whenPropertyValueIsNull_mustReturnNull()
-            throws PropertySerializationException {
-
+    public void fromString_whenPropertyValueIsNull_mustReturnNull() {
         String propertyValue = null;
 
-        PropertyBooleanSerializer instance = createInstanceUnderTest();
+        PropertyBooleanSerializer instance = createSerializer();
         MappingContext context = createMappingContext();
         Boolean result = instance.fromString(context, propertyValue);
 
-        assertNull(result);
+        assertThat(result, is(nullValue()));
     }
 
     @Test
-    public void fromString_whenPropertyValueIsStringTrue_mustReturnTrue()
-            throws PropertySerializationException {
-
+    public void fromString_whenPropertyValueIsStringTrue_mustReturnTrue() {
         String propertyValue = BooleanValues.TRUE_STRING;
         Boolean expected = Boolean.TRUE;
 
-        PropertyBooleanSerializer iut = createInstanceUnderTest();
+        PropertyBooleanSerializer iut = createSerializer();
         MappingContext context = createMappingContext();
         Boolean result = iut.fromString(context, propertyValue);
 
@@ -38,13 +35,11 @@ public class PropertyBooleanSerializerTest {
     }
 
     @Test
-    public void fromString_whenPropertyValueIsStringFalse_mustReturnFalse()
-            throws PropertySerializationException {
-
+    public void fromString_whenPropertyValueIsStringFalse_mustReturnFalse() {
         String propertyValue = BooleanValues.FALSE_STRING;
         Boolean expected = Boolean.FALSE;
 
-        PropertyBooleanSerializer iut = createInstanceUnderTest();
+        PropertyBooleanSerializer iut = createSerializer();
         MappingContext context = createMappingContext();
         Boolean result = iut.fromString(context, propertyValue);
 
@@ -52,26 +47,35 @@ public class PropertyBooleanSerializerTest {
     }
 
     @Test
-    public void toString_whenValueIsNull_mustReturnNull()
-            throws PropertySerializationException {
+    public void fromString_whenPropertyValueIsANonValidBooleanStringRepresentation_mustThrowSerializationException() {
+        String propertyValue = "non-valid-boolean-representation";
 
+        PropertyBooleanSerializer iut = createSerializer();
+        MappingContext context = createMappingContext();
+
+        assertThrows(PropertySerializationException.class, () ->
+                iut.fromString(context, propertyValue)
+        );
+    }
+
+
+    @Test
+    public void toString_whenValueIsNull_mustReturnNull() {
         Boolean value = null;
 
-        PropertyBooleanSerializer iut = createInstanceUnderTest();
+        PropertyBooleanSerializer iut = createSerializer();
         MappingContext context = createMappingContext();
         String result = iut.toString(context, value);
 
-        assertNull(result);
+        assertThat(result, is(nullValue()));
     }
 
     @Test
-    public void toString_whenValueIsTrue_mustReturnStringTrue()
-            throws PropertySerializationException {
-
+    public void toString_whenValueIsTrue_mustReturnStringTrue() {
         Boolean value = Boolean.TRUE;
         String expected = BooleanValues.TRUE_STRING;
 
-        PropertyBooleanSerializer iut = createInstanceUnderTest();
+        PropertyBooleanSerializer iut = createSerializer();
         MappingContext context = createMappingContext();
         String result = iut.toString(context, value);
 
@@ -79,20 +83,18 @@ public class PropertyBooleanSerializerTest {
     }
 
     @Test
-    public void toString_whenPropertyValueIsFalse_mustReturnStringFalse()
-            throws PropertySerializationException {
-
+    public void toString_whenPropertyValueIsFalse_mustReturnStringFalse() {
         Boolean value = Boolean.FALSE;
         String expected = BooleanValues.FALSE_STRING;
 
-        PropertyBooleanSerializer iut = createInstanceUnderTest();
+        PropertyBooleanSerializer iut = createSerializer();
         MappingContext context = createMappingContext();
         String result = iut.toString(context, value);
 
         assertThat(result, is(expected));
     }
 
-    PropertyBooleanSerializer createInstanceUnderTest() {
+    PropertyBooleanSerializer createSerializer() {
         return new PropertyBooleanSerializer();
     }
 

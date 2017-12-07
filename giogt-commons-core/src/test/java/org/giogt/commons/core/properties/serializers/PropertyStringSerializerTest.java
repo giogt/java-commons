@@ -1,70 +1,62 @@
 package org.giogt.commons.core.properties.serializers;
 
 import org.giogt.commons.core.properties.MappingContext;
-import org.giogt.commons.core.properties.PropertySerializationException;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.nullValue;
 import static org.hamcrest.core.Is.is;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class PropertyStringSerializerTest {
 
     @Test
-    public void fromString_whenPropertyValueIsNull_mustReturnNull()
-            throws PropertySerializationException {
-
+    public void fromString_whenPropertyValueIsNull_mustReturnNull() {
         String propertyValue = null;
 
-        PropertyStringSerializer iut = createInstanceUnderTest();
+        PropertyStringSerializer iut = createSerializer();
         MappingContext context = createMappingContext();
         String result = iut.fromString(context, propertyValue);
 
-        assertNull(result);
+        assertThat(result, is(nullValue()));
     }
 
     @Test
-    public void fromString_whenPropertyValueIsAString_mustReturnTheSameString()
-            throws PropertySerializationException {
-
+    public void fromString_whenPropertyValueIsAString_mustReturnTheSameString() {
         String propertyValue = "12345";
         String expected = propertyValue;
 
-        PropertyStringSerializer iut = createInstanceUnderTest();
+        PropertyStringSerializer iut = createSerializer();
         MappingContext context = createMappingContext();
         String result = iut.fromString(context, propertyValue);
 
         assertThat(result, is(expected));
     }
 
-    @Test
-    public void toString_whenValueIsNull_mustReturnNull()
-            throws PropertySerializationException {
 
+    @Test
+    public void toString_whenValueIsNull_mustReturnNull() {
         String value = null;
 
-        PropertyStringSerializer iut = createInstanceUnderTest();
+        PropertyStringSerializer iut = createSerializer();
         MappingContext context = createMappingContext();
         String result = iut.toString(context, value);
 
-        assertNull(result);
+        assertThat(result, is(nullValue()));
     }
 
     @Test
-    public void toString_whenValueIsAString_mustReturnTheSameString()
-            throws PropertySerializationException {
-
+    public void toString_whenValueIsAString_mustReturnTheSameString() {
         String value = "12345";
         String expected = "12345";
 
-        PropertyStringSerializer iut = createInstanceUnderTest();
+        PropertyStringSerializer iut = createSerializer();
         MappingContext context = createMappingContext();
         String result = iut.toString(context, value);
 
         assertThat(result, is(expected));
     }
 
-    PropertyStringSerializer createInstanceUnderTest() {
+    PropertyStringSerializer createSerializer() {
         return new PropertyStringSerializer();
     }
 

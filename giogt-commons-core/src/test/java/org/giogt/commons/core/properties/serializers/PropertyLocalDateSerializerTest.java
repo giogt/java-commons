@@ -4,46 +4,44 @@ import org.giogt.commons.core.properties.MappingContext;
 import org.giogt.commons.core.properties.PropertySerializationException;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+import java.time.Month;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.nullValue;
 import static org.hamcrest.core.Is.is;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class PropertyEnumSerializerTest {
-
-    enum TestEnum {
-        FOO,
-        BAR
-    }
+class PropertyLocalDateSerializerTest {
 
     @Test
     public void fromString_whenPropertyValueIsNull_mustReturnNull() {
         String propertyValue = null;
 
-        PropertyEnumSerializer iut = createSerializer();
+        PropertyLocalDateSerializer iut = createSerializer();
         MappingContext context = createMappingContext();
-        TestEnum result = (TestEnum) iut.fromString(context, propertyValue);
+        LocalDate result = iut.fromString(context, propertyValue);
 
         assertThat(result, is(nullValue()));
     }
 
     @Test
-    public void fromString_whenPropertyValueIsAValidEnumStringRepresentation_mustReturnTheEnum() {
-        String propertyValue = TestEnum.FOO.toString();
-        TestEnum expected = TestEnum.FOO;
+    public void fromString_whenPropertyValueIsAValidLocalDateStringRepresentation_mustReturnTheLocalDate() {
+        String propertyValue = "2000-07-22";
+        LocalDate expected = LocalDate.of(2000, Month.JULY, 22);
 
-        PropertyEnumSerializer iut = createSerializer();
+        PropertyLocalDateSerializer iut = createSerializer();
         MappingContext context = createMappingContext();
-        TestEnum result = (TestEnum) iut.fromString(context, propertyValue);
+        LocalDate result = iut.fromString(context, propertyValue);
 
         assertThat(result, is(expected));
     }
 
     @Test
-    public void fromString_whenPropertyValueIsANonValidEnumStringRepresentation_mustThrowSerializationException() {
-        String propertyValue = "NON_VALID_ENUM_STRING_REPRESENTATION";
+    public void fromString_whenPropertyValueIsANonValidLocalDateStringRepresentation_mustThrowSerializationException() {
+        String propertyValue = "!?2000-07-22?!";
 
-        PropertyEnumSerializer iut = createSerializer();
+        PropertyLocalDateSerializer iut = createSerializer();
         MappingContext context = createMappingContext();
         assertThrows(PropertySerializationException.class, () ->
                 iut.fromString(context, propertyValue)
@@ -53,9 +51,9 @@ public class PropertyEnumSerializerTest {
 
     @Test
     public void toString_whenValueIsNull_mustReturnNull() {
-        TestEnum value = null;
+        LocalDate value = null;
 
-        PropertyEnumSerializer iut = createSerializer();
+        PropertyLocalDateSerializer iut = createSerializer();
         MappingContext context = createMappingContext();
         String result = iut.toString(context, value);
 
@@ -63,25 +61,24 @@ public class PropertyEnumSerializerTest {
     }
 
     @Test
-    public void toString_whenValueIsAValidEnum_mustReturnTheEnumStringRepresentation() {
-        TestEnum value = TestEnum.BAR;
-        String expected = TestEnum.BAR.toString();
+    public void toString_whenValueIsAValidLocalDate_mustReturnTheLocalDateStringRepresentation() {
+        LocalDate value = LocalDate.of(2000, Month.JULY, 22);
+        String expected = "2000-07-22";
 
-        PropertyEnumSerializer iut = createSerializer();
+        PropertyLocalDateSerializer iut = createSerializer();
         MappingContext context = createMappingContext();
         String result = iut.toString(context, value);
 
         assertThat(result, is(expected));
     }
 
-    PropertyEnumSerializer createSerializer() {
-        PropertyEnumSerializer propertyEnumSerializer = new PropertyEnumSerializer();
-        return propertyEnumSerializer;
+    PropertyLocalDateSerializer createSerializer() {
+        return new PropertyLocalDateSerializer();
     }
 
     MappingContext createMappingContext() {
         MappingContext context = new MappingContext();
-        context.setMappingType(TestEnum.class);
+        context.setMappingType(LocalDate.class);
         return context;
     }
 
