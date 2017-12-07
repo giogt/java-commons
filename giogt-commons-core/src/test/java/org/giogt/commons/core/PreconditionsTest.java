@@ -24,7 +24,6 @@ class PreconditionsTest {
     }
 
 
-
     @Test
     public void notNullWithSupplier_forNotNullReference_mustReturnTheReference() {
         String reference = "abcde";

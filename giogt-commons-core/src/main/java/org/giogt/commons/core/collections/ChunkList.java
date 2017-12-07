@@ -6,12 +6,12 @@ import java.util.List;
 /**
  * A wrapper on {@link List} that allows to iterate it in chunks, according to
  * the specified chunk size.
- *
+ * <p>
  * The iterator returned by this chunk list will return a {@link Chunk} object
  * at every iteration, containing the minimum and maximum indexes and values
  * and the chunk (a list with all the elements from the minimum to the maximum
  * index).
- *
+ * <p>
  * The <tt>onlyMinAndMax</tt> flag (default = <tt>false</tt>) can be specified.
  * If <tt>true</tt>, for every chunk only the minimum and maximum indexes and
  * values are set and the chunk will always be <tt>null</tt>. This can be used

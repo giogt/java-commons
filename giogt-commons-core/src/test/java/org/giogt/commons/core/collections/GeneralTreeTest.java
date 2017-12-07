@@ -9,7 +9,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.core.Is.is;
 
-public class GeneralTreeTest  {
+public class GeneralTreeTest {
 
     @Test
     public void preOrderTraversal_forOneNode_mustVisitTheNode() {

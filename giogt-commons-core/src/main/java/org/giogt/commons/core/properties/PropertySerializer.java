@@ -5,7 +5,7 @@ public interface PropertySerializer<T> {
 
     /**
      * Returns the type of objects this serializer can handle.
-     *
+     * <p>
      * This can also be a more generic (super) type of objects.
      */
     Class<? extends T> handledType();

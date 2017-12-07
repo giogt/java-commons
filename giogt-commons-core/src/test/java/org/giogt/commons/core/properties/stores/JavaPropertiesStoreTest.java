@@ -2,8 +2,8 @@ package org.giogt.commons.core.properties.stores;
 
 import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.core.Is.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 
 public class JavaPropertiesStoreTest {
 

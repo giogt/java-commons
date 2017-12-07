@@ -17,7 +17,7 @@ public @interface Property {
 
     /**
      * The key of the configuration property (optional).
-     *
+     * <p>
      * Defaults to the name of the field.
      */
     String key() default "";

@@ -623,7 +623,7 @@ public class Strings {
      * Parses a list from specified input string using
      * {@link #toList(String, String, boolean)}, but returns
      * only the value corresponding to the specified index, if present.
-     *
+     * <p>
      * If not present, an empty string is returned.
      */
     public static String getListValue(
@@ -921,7 +921,7 @@ public class Strings {
      * Parses a map from specified input string using
      * {@link #toMap(String, String, String, boolean, boolean)}, but returns
      * only the value corresponding to the specified key, if present.
-     *
+     * <p>
      * If not present, an empty string is returned.
      */
     public static String getMapValue(
@@ -1049,7 +1049,7 @@ public class Strings {
     /**
      * Helper function for making null strings safe for comparisons, etc.
      *
-     * @return (s == null) ? "" : s;
+     * @return (s = = null) ? "" : s;
      */
     public static String makeSafe(String s) {
         return (s == null) ? "" : s;
