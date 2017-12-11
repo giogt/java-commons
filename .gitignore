@@ -22,11 +22,13 @@
 hs_err_pid*
 
 # Maven build
-target/**
+*/target/*
 
-# IDE config files
+# IntelliJ IDEA config files
 .idea
 *.iml
+
+# Eclipse config files
 .classpath
 .project
 .settings
