@@ -25,10 +25,13 @@ hs_err_pid*
 */target/*
 
 # IntelliJ IDEA config files
-.idea
+.idea/
 *.iml
 
 # Eclipse config files
 .classpath
 .project
-.settings
+.settings/
+
+# Visual Studio code
+.vscode/
