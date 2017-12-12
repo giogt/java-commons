@@ -3,6 +3,7 @@ package org.giogt.commons.core.collections;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class TreeNode<T> implements Serializable {
@@ -56,23 +57,23 @@ public class TreeNode<T> implements Serializable {
     }
 
     public void addChild(T child) {
-        addChild(new TreeNode<T>(child));
+        addChildNode(new TreeNode<>(child));
     }
 
-    public void addChild(TreeNode<T> child) {
+    public void addChildNode(TreeNode<T> child) {
         children.add(child);
         child.setParent(this);
     }
 
-    public void addChildren(T... children) {
+    public void addChildren(Collection<T> children) {
         for (T child : children) {
             addChild(child);
         }
     }
 
-    public void addChildren(TreeNode<T>... children) {
+    public void addChildNodes(Collection<TreeNode<T>> children) {
         for (TreeNode<T> child : children) {
-            addChild(child);
+            addChildNode(child);
         }
     }
 

@@ -3,6 +3,7 @@ package org.giogt.commons.core.collections;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -37,9 +38,9 @@ public class GeneralTreeTest {
         TreeNode<String> root = tree.getRoot();
         TreeNode<String> tree_node_2_1 = new TreeNode<>(node_2_1);
         TreeNode<String> tree_node_2_2 = new TreeNode<>(node_2_2);
-        root.addChildren(tree_node_2_1, tree_node_2_2);
-        tree_node_2_1.addChildren(node_3_1, node_3_2);
-        tree_node_2_2.addChildren(node_3_3, node_3_4);
+        root.addChildNodes(Arrays.asList(tree_node_2_1, tree_node_2_2));
+        tree_node_2_1.addChildren(Arrays.asList(node_3_1, node_3_2));
+        tree_node_2_2.addChildren(Arrays.asList(node_3_3, node_3_4));
 
         List<TreeNode<String>> nodes = preOrderTraversal(tree);
 
@@ -80,9 +81,9 @@ public class GeneralTreeTest {
         TreeNode<String> root = tree.getRoot();
         TreeNode<String> tree_node_2_1 = new TreeNode<>(node_2_1);
         TreeNode<String> tree_node_2_2 = new TreeNode<>(node_2_2);
-        root.addChildren(tree_node_2_1, tree_node_2_2);
-        tree_node_2_1.addChildren(node_3_1, node_3_2);
-        tree_node_2_2.addChildren(node_3_3, node_3_4);
+        root.addChildNodes(Arrays.asList(tree_node_2_1, tree_node_2_2));
+        tree_node_2_1.addChildren(Arrays.asList(node_3_1, node_3_2));
+        tree_node_2_2.addChildren(Arrays.asList(node_3_3, node_3_4));
 
         List<TreeNode<String>> nodes = postOrderTraversal(tree);
 

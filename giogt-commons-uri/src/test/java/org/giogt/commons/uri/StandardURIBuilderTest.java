@@ -313,7 +313,7 @@ public class StandardURIBuilderTest {
                 "&" + param2Name + "=" + param2Value +
                 "#" + fragment;
 
-        URIBuilder uriBuilder = new StandardURIBuilder()
+        URIBuilder<?> uriBuilder = new StandardURIBuilder()
                 .setScheme(scheme)
                 .setUserInfo(userInfo)
                 .setHost(host)

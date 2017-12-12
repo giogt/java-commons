@@ -116,41 +116,6 @@ public abstract class AbstractMultivaluedMap<K, V> implements MultivaluedMap<K, 
     }
 
     /**
-     * Add multiple values to the current list of values for the supplied key. If
-     * the supplied array of new values is empty, method returns immediately.
-     * Method throws a {@code NullPointerException} if the supplied array of values
-     * is {@code null}.
-     * <p>
-     * NOTE: This implementation ignores {@code null} values; Any of the supplied values
-     * of {@code null} is ignored and not added to the value list. Overriding
-     * implementations may modify this behavior by redefining the
-     * {@link #addNull(List)} method.
-     *
-     * @param key       the key.
-     * @param newValues the values to be added.
-     * @throws NullPointerException if the supplied array of new values is {@code null}.
-     */
-    @Override
-    public final void addAll(K key, V... newValues) {
-        if (newValues == null) {
-            throw new NullPointerException("Supplied array of values must not be null.");
-        }
-        if (newValues.length == 0) {
-            return;
-        }
-
-        List<V> values = getValues(key);
-
-        for (V value : newValues) {
-            if (value != null) {
-                values.add(value);
-            } else {
-                addNull(values);
-            }
-        }
-    }
-
-    /**
      * Add all the values from the supplied value list to the current list of
      * values for the supplied key. If the supplied value list is empty, method
      * returns immediately. Method throws a {@code NullPointerException} if the

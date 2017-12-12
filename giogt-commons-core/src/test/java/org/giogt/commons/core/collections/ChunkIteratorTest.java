@@ -269,7 +269,7 @@ public class ChunkIteratorTest {
     }
 
     private ChunkIterator<String> buildChunkIterator(List<String> list, int chunkSize) {
-        return new ChunkIterator(list, chunkSize);
+        return new ChunkIterator<>(list, chunkSize);
     }
 
 }

@@ -38,18 +38,6 @@ public interface MultivaluedMap<K, V> extends Map<K, List<V>> {
     V getFirst(K key);
 
     /**
-     * Add multiple values to the current list of values for the supplied key. If
-     * the supplied array of new values is empty, method returns immediately.
-     * Method throws a {@code NullPointerException} if the supplied array of values
-     * is {@code null}.
-     *
-     * @param key       the key.
-     * @param newValues the values to be added.
-     * @throws NullPointerException if the supplied array of new values is {@code null}.
-     */
-    void addAll(K key, V... newValues);
-
-    /**
      * Add all the values from the supplied value list to the current list of
      * values for the supplied key. If the supplied value list is empty, method
      * returns immediately. Method throws a {@code NullPointerException} if the

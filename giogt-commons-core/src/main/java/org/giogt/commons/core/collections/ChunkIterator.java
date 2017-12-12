@@ -10,7 +10,7 @@ public class ChunkIterator<T> implements Iterator<Chunk<T>> {
     private final int chunkSize;
     private final boolean onlyMinAndMax;
 
-    private Chunk currentChunk = null;
+    private Chunk<T> currentChunk = null;
 
     public ChunkIterator(List<T> list, int chunkSize) {
         this(list, chunkSize, false);
@@ -68,7 +68,7 @@ public class ChunkIterator<T> implements Iterator<Chunk<T>> {
             maxIndex = Math.min(minIndex + chunkSize - 1, list.size() - 1);
         }
 
-        currentChunk = new Chunk();
+        currentChunk = new Chunk<>();
         currentChunk.setMinIndex(minIndex);
         currentChunk.setMaxIndex(maxIndex);
         currentChunk.setMinValue(list.get(minIndex));
